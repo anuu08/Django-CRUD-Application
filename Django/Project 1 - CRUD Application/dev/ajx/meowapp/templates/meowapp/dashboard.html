@@ -1,0 +1,52 @@
+{% extends 'meowapp/base.html' %}
+
+
+{% block content %}
+
+
+<h1> Welcome to the dashboard page! {{user}}  </h1>
+<hr>
+<a class="btn btn-outline-primary btn-sm" href="{% url 'create-record' %}">
+    create a new record
+</a>
+<hr>
+<table class='table  table-hover table-bordered'>
+    <thead class="table-dark">
+        <tr>
+          <th scope="col">id</th> 
+          <th scope="col">Fullname</th>  
+          <th scope="col">Email</th>  
+          <th scope="col">phone</th>  
+          <th scope="col">Address</th>  
+          <th scope="col">City</th>  
+          <th scope="col">Province</th>  
+          <th scope="col">country</th>
+          <th scope="col">Join_date</th>    
+          <th scope="col">view</th>  
+
+        </tr>
+    </thead>
+    <tbody>
+        {% if records %}
+         {% for record in records %}
+        <tr>
+          <td>{{record.id}}</td>
+          <td>{{record.first_name}} {{record.last_name}}</td>
+          <td>{{record.email}}</td>
+          <td>{{record.phone}}</td>
+          <td>{{record.address}}</td>
+          <td>{{record.city}}</td>
+          <td>{{record.province}}</td>
+          <td>{{record.country}}</td>
+          <td>{{record.creation_date}}</td>
+           
+
+            
+        </tr>
+         {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+
+{% endblock %}
